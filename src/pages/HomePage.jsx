@@ -1,12 +1,13 @@
 import { use } from "react";
 import MovieCard from "../components/MovieCard";
 import { useState } from "react";
+import './../index.css';
 function HomePage(){
     const movies = [
-        {id:"1",title:"Night Agent",year:"2015"},
-        {id:"2",title:"Dragon Ball",year:"2013"},
-        {id:"3",title:"Sanexxx",year:"1990"},
-        {id:"4",title:"Mamadou DIOP",year:"2008"},
+        {id:1,title:"Night Agent",year:"2015"},
+        {id:2,title:"Dragon Ball",year:"2013"},
+        {id:3,title:"Sanexxx",year:"1990"},
+        {id:4,title:"Mamadou DIOP",year:"2008"},
     ]
 
     // Là on définit une variable et une méthode qui vont garder l'état.
@@ -23,17 +24,21 @@ function HomePage(){
     // La fonction OnChange() permet d'affecter la saisie au value
     
     return(
-        <div className="home">
-            <form>
+        <>
+        <div>
+            <form className="">
 
                 <input type="text" className="input-path" value={SearchQuery} onChange={(e) => SetSearchQuery(e.target.value)}></input>
                 <button onClick={BtnHandle}>Search</button>
             </form>
-            <div className="movie-div">
+            </div>
+            <div className="home flex">
+            <div className="movie-div grid grid-cols-2 gap-2">
                 {movies.map((mouvie)=> (mouvie.title.toLowerCase().startsWith(SearchQuery) && <MovieCard movie = {mouvie}/>))}
             </div>
 
         </div>
+        </>
     );
 }
 export default HomePage
